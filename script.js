@@ -31,19 +31,15 @@ function cursor() {
 
 function revalToSpan() {
   document.querySelectorAll(".reveal").forEach(function (elem) {
-    // create two spans
     let parent = document.createElement("span");
     let child = document.createElement("span");
 
-    // parent and child both sets their respective classes
     parent.classList.add("parent");
     child.classList.add("child");
 
-    // span parent gets child and child gets elem details
     child.innerHTML = elem.innerHTML;
     parent.appendChild(child);
 
-    // elem replaces its value with parent span
     elem.innerHTML = "";
     elem.appendChild(parent);
   });
@@ -86,9 +82,7 @@ function loaderAnimations() {
     delay: -0.5,
     ease: Circ.easeInOut,
     onComplete: function () {
-      // animateHomepage();      
       clickdiv();
-
     },
   });
   tl.from(".anime", {
@@ -101,46 +95,91 @@ function loaderAnimations() {
     x: -100,
     delay: 0.1,
     opacity: 0,
-    stagger: 0.2, 
+    stagger: 0.2,
   });
-  tl.from(".iconsanimation, .elastic, .elastic2",{
-    duration:1.2,
+  tl.from(".iconsanimation, .elastic, .elastic2", {
+    duration: 1.2,
     ease: "elastic.out(1,0.3)",
     x: -150,
-    stagger: 0.1, 
+    stagger: 0.1,
     opacity: 0,
-  })
+  });
 }
 
 function clickdiv() {
-  const aboutBtn = document.querySelector('.aboutme');
-  const vaporDiv = document.querySelector('.waraperdiv');
+  const aboutBtn = document.querySelector(".aboutme");
+  const vaporDiv = document.querySelector(".waraperdiv");
 
-  aboutBtn.addEventListener('click', () => {
+  aboutBtn.addEventListener("click", () => {
     gsap.to(vaporDiv, {
       opacity: 1,
-      scale: 1, // Scale it to full size when clicked
-      borderRadius: 0, // Remove border radius for the animation
-      duration: 1, // 
-      ease: "power2.out"
+      scale: 1,
+      borderRadius: 0,
+      duration: 1,
+      ease: "power2.out",
     });
   });
 
-  vaporDiv.addEventListener('click', () => {
+  vaporDiv.addEventListener("click", () => {
     gsap.to(vaporDiv, {
       opacity: 0,
-      scale: 0, // Shrink back when clicked
-      borderRadius: "30px", // Return border radius
+      scale: 0,
+      borderRadius: "30px",
       duration: 1,
-      ease: "power2.in"
+      ease: "power2.in",
     });
   });
 }
 
+function locoInitialize() {
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Using Locomotive Scroll from Locomotive https://github.com/locomotivemtl/locomotive-scroll
+
+  const locoScroll = new LocomotiveScroll({
+    el: document.querySelector("main"),
+    smooth: true,
+  });
+  // each time Locomotive Scroll updates, tell ScrollTrigger to update too (sync positioning)
+  locoScroll.on("scroll", ScrollTrigger.update);
+
+  // tell ScrollTrigger to use these proxy methods for the "main" element since Locomotive Scroll is hijacking things
+  ScrollTrigger.scrollerProxy("main", {
+    scrollTop(value) {
+      return arguments.length
+        ? locoScroll.scrollTo(value, 0, 0)
+        : locoScroll.scroll.instance.scroll.y;
+    }, // we don't have to define a scrollLeft because we're only scrolling vertically.
+    getBoundingClientRect() {
+      return {
+        top: 0,
+        left: 0,
+        width: window.innerWidth,
+        height: window.innerHeight,
+      };
+    },
+    // LocomotiveScroll handles things completely differently on mobile devices - it doesn't even transform the container at all! So to get the correct behavior and avoid jitters, we should pin things with position: fixed on mobile. We sense it by checking to see if there's a transform applied to the container (the LocomotiveScroll-controlled element).
+    pinType: document.querySelector("main").style.transform
+      ? "transform"
+      : "fixed",
+  });
+
+  // each time the window updates, we should refresh ScrollTrigger and then update LocomotiveScroll.
+  ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+
+  // after everything is set up, refresh() ScrollTrigger and update LocomotiveScroll because padding may have been added for pinning, etc.
+  ScrollTrigger.refresh();
+}
+
+// Make sure Shery is defined before using it
+if (typeof Shery !== "undefined") {
+  Shery.makeMagnet(".magnet-target");
+} else {
+  console.warn("Shery is not defined. Make sure to include the Shery library.");
+}
 
 
 
-Shery.makeMagnet(".magnet-target");
 
 cursor();
 revalToSpan();

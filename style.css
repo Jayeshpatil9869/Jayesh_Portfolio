@@ -45,19 +45,19 @@
   background-color: #f2f2f2;
   position: fixed;
   z-index: 999;
-  font-family: Nunito;
   /* display: none; */
+  font-family: Nunito;
 }
 
 .gray {
-    position: absolute;
-    top: 100%;
-    width: 100%;
-    height: 0vh;
-    /* background: linear-gradient(to bottom, #1595b6, #1f2667e6), #4595eb; */
-    background-color: #333;
-    z-index: 999;
-    /* display: none; */
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  height: 0vh;
+  background-color: #333;
+  z-index: 999;
+  /* display: none; */
+
 }
 
 .loader .topHeading {
@@ -110,13 +110,9 @@
   width: 100%;
   height: 100%;
   backdrop-filter: blur(10px);
-  /* border: 1px solid white; */
   opacity: 0;
-  scale:0;
+  scale: 0;
   position: absolute;
-  /* top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
   z-index: 999;
   border-radius: 5px;
   display: flex;
@@ -127,15 +123,17 @@
 .middev {
   height: 90vh;
   width: 80vw;
-  background-color: rgba(51, 51, 51, .6);
-  /* backdrop-filter: blur(40px); */
+  background-color: rgba(51, 51, 51, 0.6);
   display: flex;
+}
+
+.midTop p {
+  margin-bottom: 20px;
 }
 
 .midleft {
   width: 50%;
   height: 100%;
-  /* padding: 2rem;/ */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -146,3 +144,65 @@
   height: 100%;
 }
 
+.button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background: transparent;
+  border: none;
+  position: relative;
+  left: 60%;
+  color: #f0f0f0;
+  z-index: 1;
+}
+
+.button::after,
+.button::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  transition: all 0.4s;
+}
+
+.button::before {
+  transform: translate(0%, 0%);
+  width: 100%;
+  height: 100%;
+  background: #28282d;
+  border-radius: 10px;
+}
+
+.button::after {
+  transform: translate(10px, 10px);
+  width: 35px;
+  height: 35px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border-radius: 50px;
+}
+
+.button:hover::before {
+  transform: translate(5%, 20%);
+  width: 110%;
+  height: 110%;
+}
+
+.button:hover::after {
+  border-radius: 10px;
+  transform: translate(0, 0);
+  width: 100%;
+  height: 100%;
+}
+
+.button:active::after {
+  transition: 0s;
+  transform: translate(0, 5%);
+}
+
+
+.page2{
+  background-color: #000;
+  height: 100vh;
+  width: 100vw;
+}
