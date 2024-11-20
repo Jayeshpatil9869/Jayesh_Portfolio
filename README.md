@@ -23,6 +23,6 @@ I am a recent graduate with a Bachelor's in Business Administration, specializin
 6. **Rejouice**: A project showcasing [GitHub Link](https://github.com/Jayeshpatil9869/Rejouice-Clone) and [Live Demo](https://jayeshpatil9869.github.io/Rejouice-Clone/AsA).
 
 ## Contact
-Feel free to reach out to me via [GitHub](https://github.com/Jayeshpatil9869) or [LinkedIn](https://www.linkedin.com/in/jayesh-patil-123456789/).
+Feel free to reach out to me via [GitHub](https://github.com/Jayeshpatil9869) or [LinkedIn](https://www.linkedin.com/in/jayesh-frontend-developer/).
 
 Thank you for visiting my portfolio!
