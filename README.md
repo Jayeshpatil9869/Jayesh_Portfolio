@@ -2,12 +2,6 @@
 
 Welcome to my portfolio! This repository showcases my work as a frontend web developer. Here, you will find various projects that demonstrate my skills and expertise in web development.
 
-## Table of Contents
-- [About Me](#about-me)
-- [Technologies Used](#technologies-used)
-- [Projects](#projects)
-- [Contact](#contact)
-
 ## About Me
 I am a recent graduate with a Bachelor's in Business Administration, specializing in Computer Applications. My passion lies in frontend web development, and I have a solid foundation in HTML, CSS, and JavaScript.
 
