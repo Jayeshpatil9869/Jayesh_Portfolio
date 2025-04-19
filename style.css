@@ -50,7 +50,7 @@
   position: fixed;
   z-index: 999;
   font-family: Nunito;
-  display: none;
+/*   display: none; */
 }
 
 .gray {
@@ -60,7 +60,7 @@
   height: 0vh;
   background-color: #333;
   z-index: 999;
-  display: none;
+/*   display: none; */
 }
 
 .loader .topHeading {
