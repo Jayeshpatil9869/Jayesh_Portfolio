@@ -50,7 +50,7 @@
   position: fixed;
   z-index: 999;
   font-family: Nunito;
-  /* display: none; */
+  display: none;
 }
 
 .gray {
@@ -60,8 +60,7 @@
   height: 0vh;
   background-color: #333;
   z-index: 999;
-  /* display: none; */
-
+  display: none;
 }
 
 .loader .topHeading {
@@ -161,7 +160,7 @@
 
 .button::after,
 .button::before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   right: 0;
@@ -243,11 +242,11 @@
   color: #14cf93;
 }
 
-  .workRow h1 .mini {
-    /* font-size: 2vw; */
-    /* font-weight: normal; */
-    margin-left: 2.4vw;
-  }
+.workRow h1 .mini {
+  /* font-size: 2vw; */
+  /* font-weight: normal; */
+  margin-left: 2.4vw;
+}
 
 .o-ui-arrow path {
   stroke: rgb(65, 65, 65);
@@ -268,7 +267,9 @@
   justify-content: space-between;
 }
 
-.cnt1, .cnt4, .cnt5 {
+.cnt1,
+.cnt4,
+.cnt5 {
   width: 45%;
   height: 60vh;
   width: 55%;
@@ -277,7 +278,9 @@
   position: relative;
 }
 
-.cnt2, .cnt3, .cnt6 {
+.cnt2,
+.cnt3,
+.cnt6 {
   height: 46vh;
   width: 40%;
   background-color: #000000;
@@ -316,7 +319,7 @@
   opacity: 1;
 }
 
-/* From Uiverse.io by liyaxu123 */ 
+/* From Uiverse.io by liyaxu123 */
 .form-control {
   position: relative;
   margin: 20px 0 40px;
@@ -331,7 +334,7 @@
   width: 100%;
   padding: 15px 0;
   font-size: 18px;
-  font-family: 'Gil';
+  font-family: "Gil";
   font-weight: 100;
   color: #fff;
 }
@@ -340,7 +343,6 @@
 .form-control input:valid {
   outline: 0;
   border-bottom-color: #fff;
-  
 }
 
 .form-control label {
@@ -354,20 +356,19 @@
   display: inline-block;
   font-size: 1.2rem;
   min-width: 5px;
-  font-family: 'Gil';
+  font-family: "Gil";
   font-weight: 100;
   color: #fff;
   opacity: 0.5;
   transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-.form-control input:focus+label span,
-.form-control input:valid+label span {
+.form-control input:focus + label span,
+.form-control input:valid + label span {
   color: #fff;
   opacity: 1;
   transform: translateY(-30px);
 }
-
 
 .footerSubBtn {
   font-weight: bold;
@@ -382,7 +383,7 @@
   justify-content: center;
   align-items: center;
 }
-.footerSubBtn:hover{
+.footerSubBtn:hover {
   /* color: white; */
   /* background-color: rgb(89, 89, 89); */
   scale: 1.05;
@@ -395,7 +396,7 @@
 
 .footerSubBtn:hover .span-mother {
   position: absolute;
-  opacity: 0; 
+  opacity: 0;
   transition: opacity 0.3s ease;
 }
 

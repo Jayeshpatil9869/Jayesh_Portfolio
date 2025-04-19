@@ -110,7 +110,6 @@ function loaderAnimations() {
     stagger: 0.1,
     opacity: 0,
   });
-  
 }
 
 function clickdiv() {
@@ -188,17 +187,19 @@ function cardHoverEffect() {
   document.querySelectorAll(".cnt").forEach(function (cnt) {
     var showingImage;
     var colors = {
-      'cnt1': '49545b',
-      'cnt2': 'C8C7CB', 
-      'cnt3': '3F3F3F',
-      'cnt4': '694d43',
-      'cnt5': 'dadde2',
-      'cnt6': 'a2afa7'
+      cnt1: "49545b",
+      cnt2: "C8C7CB",
+      cnt3: "3F3F3F",
+      cnt4: "694d43",
+      cnt5: "dadde2",
+      cnt6: "a2afa7",
+      cnt7: "25232A",
+      cnt8: "878E9A",
     };
 
     // Get the image and video elements
-    const img = cnt.querySelector('img');
-    const video = cnt.querySelector('video');
+    const img = cnt.querySelector("img");
+    const video = cnt.querySelector("video");
 
     if (video) {
       video.loop = false; // Disable video looping
@@ -208,31 +209,38 @@ function cardHoverEffect() {
 
     cnt.addEventListener("mousemove", function (dets) {
       showingImage = dets.target;
-      
+
       // Find which cnt class this element has
-      let cntClass = Array.from(cnt.classList).find(c => colors[c]);
+      let cntClass = Array.from(cnt.classList).find((c) => colors[c]);
       let color = colors[cntClass] || dets.target.dataset.color;
-      
+
       document.querySelector(".work").style.backgroundColor = "#" + color;
 
       // Show video and hide image on hover for all cnt classes
-      if (video && (cnt.classList.contains('cnt1') || cnt.classList.contains('cnt2') || 
-          cnt.classList.contains('cnt3') || cnt.classList.contains('cnt4') || 
-          cnt.classList.contains('cnt5') || cnt.classList.contains('cnt6'))) {
-        
+      if (
+        video &&
+        (cnt.classList.contains("cnt1") ||
+          cnt.classList.contains("cnt2") ||
+          cnt.classList.contains("cnt3") ||
+          cnt.classList.contains("cnt4") ||
+          cnt.classList.contains("cnt5") ||
+          cnt.classList.contains("cnt6") ||
+          cnt.classList.contains("cnt7") ||
+          cnt.classList.contains("cnt8"))
+      ) {
         // Only play video if it's not already playing
         if (video.paused) {
-          video.style.display = 'block';
-          video.style.opacity = '1';
+          video.style.display = "block";
+          video.style.opacity = "1";
           video.currentTime = 0;
           const playPromise = video.play();
           if (playPromise !== undefined) {
-            playPromise.catch(error => {
+            playPromise.catch((error) => {
               console.log("Video play error:", error);
             });
           }
         }
-        
+
         img.style.opacity = 0;
       }
     });
@@ -241,12 +249,19 @@ function cardHoverEffect() {
       document.querySelector(".work").style.backgroundColor = "#000";
 
       // Hide video and show image on mouse leave for all cnt classes
-      if (video && (cnt.classList.contains('cnt1') || cnt.classList.contains('cnt2') || 
-          cnt.classList.contains('cnt3') || cnt.classList.contains('cnt4') || 
-          cnt.classList.contains('cnt5') || cnt.classList.contains('cnt6'))) {
-        
-        video.style.display = 'none';
-        video.style.opacity = '0';
+      if (
+        video &&
+        (cnt.classList.contains("cnt1") ||
+          cnt.classList.contains("cnt2") ||
+          cnt.classList.contains("cnt3") ||
+          cnt.classList.contains("cnt4") ||
+          cnt.classList.contains("cnt5") ||
+          cnt.classList.contains("cnt6") ||
+          cnt.classList.contains("cnt7") ||
+          cnt.classList.contains("cnt8"))
+      ) {
+        video.style.display = "none";
+        video.style.opacity = "0";
         video.pause();
         video.currentTime = 0; // Reset video position
         img.style.opacity = 1;
@@ -255,15 +270,14 @@ function cardHoverEffect() {
 
     // Add ended event listener to handle video completion
     if (video) {
-      video.addEventListener('ended', function() {
-        video.style.display = 'none';
-        video.style.opacity = '0';
+      video.addEventListener("ended", function () {
+        video.style.display = "none";
+        video.style.opacity = "0";
         img.style.opacity = 1;
       });
     }
   });
 }
-
 
 // Make sure Shery is defined before using it
 if (typeof Shery !== "undefined") {
@@ -272,13 +286,9 @@ if (typeof Shery !== "undefined") {
   console.warn("Shery is not defined. Make sure to include the Shery library.");
 }
 
-
-
-
-
 cursor();
 revalToSpan();
-loaderAnimations();  
+loaderAnimations();
 cardHoverEffect();
 scrollToWork();
 locoInitialize();
